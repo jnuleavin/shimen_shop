@@ -55,16 +55,15 @@
           <!-- 级联选择器 -->
           <!-- options用来指定数据源 -->
           <!-- props用来指定配置对象 -->
+          <!-- change-on-select -->
+          <!-- show-all-levels -->
           <el-cascader
-            expand-trigger="hover"
             :options="parentCateList"
             :props="cascaderProps"
             v-model="selectedOptions"
             @change="parentCateChanged"
             clearable
-            change-on-select
-            show-all-levels
-            size="medium">
+            change-on-select>
           </el-cascader>
         </el-form-item>
       </el-form>
@@ -143,6 +142,7 @@ export default {
       },
       parentCateList: [],
       cascaderProps: {
+        expandTrigger: 'hover',
         value: 'cat_id',
         label: 'cat_name',
         children: 'children'
