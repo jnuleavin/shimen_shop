@@ -189,7 +189,7 @@ export default {
       const { data: res } = await this.$http.get('categories/' + this.cateId + '/attributes', { params: { sel: this.activeName } })
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       res.data.forEach(item => {
-        item.attr_vals = item.attr_vals ? item.attr_vals.split(',') : []
+        item.attr_vals = item.attr_vals ? item.attr_vals.split(' ') : []
         // 控制文本框的显示与隐藏
         item.inputVisible = false
         // 文本框中输入的值
@@ -273,7 +273,7 @@ export default {
       const { data: res } = await this.$http.put(`categories/${this.cateId}/attributes/${row.attr_id}`, {
         attr_name: row.attr_name,
         attr_sel: row.attr_sel,
-        attr_vals: row.attr_vals.join(',')
+        attr_vals: row.attr_vals.join(' ')
       })
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.$message.success(res.meta.msg)
